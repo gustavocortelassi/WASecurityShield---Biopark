@@ -1,8 +1,13 @@
 {
   "manifest_version": 3,
-  "name": "WA Security Shield - Biopark",
+  "name": "Biopark Security Shield",
   "version": "1.0.0",
-  "description": "Bloqueio preventivo de arquivos executáveis no WhatsApp Web.",
+  "description": "Proteção institucional contra phishing e malwares no WhatsApp Web.",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
   "permissions": [
     "downloads",
     "notifications"
