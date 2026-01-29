@@ -2,20 +2,22 @@
   "manifest_version": 3,
   "name": "Biopark Security Shield",
   "version": "1.0.0",
-  "description": "Proteção institucional contra phishing e malwares no WhatsApp Web.",
+  "options_page": "admin-dashboard.html",
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
     "128": "icon128.png"
   },
-  "permissions": [
-    "downloads",
-    "notifications"
-  ],
-  "host_permissions": [
-    "https://web.whatsapp.com/*"
-  ],
+  "permissions": ["downloads", "notifications", "storage"],
+  "host_permissions": ["https://web.whatsapp.com/*"],
   "background": {
-    "service_worker": "background.js"
-  }
+    "service_worker": "security-engine.js" 
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://web.whatsapp.com/*"],
+      "js": ["interface-guardian.js"],
+      "run_at": "document_end"
+    }
+  ]
 }

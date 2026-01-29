@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Biopark Security Shield - Dashboard</title>
+    <style>
+        /* Primary Biopark Colors: #1d2b3a (Dark Blue) and #e11d48 (Red) */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f9; margin: 0; padding: 20px; color: #1d2b3a; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 5px solid #e11d48; }
+        .header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 20px; }
+        .logo-text { font-size: 20px; font-weight: bold; color: #1d2b3a; /* Biopark Dark Blue */ }
+        .status-badge { background: #dcfce7; color: #166534; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+        h2 { font-size: 18px; margin-bottom: 10px; color: #1d2b3a; /* Biopark Dark Blue */ }
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        .card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 15px; border-radius: 8px; }
+        .card h3 { margin: 0 0 8px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #64748b; }
+        .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+        .tag { background: #1d2b3a; /* Biopark Dark Blue */ color: white; padding: 2px 8px; border-radius: 4px; font-size: 11px; }
+        .footer-note { margin-top: 25px; font-size: 12px; color: #94a3b8; line-height: 1.5; border-top: 1px solid #eee; padding-top: 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-text">🛡️ Biopark Security Shield</div>
+            <span class="status-badge">ATIVO & PROTEGIDO</span>
+        </div>
+
+        <section>
+            <h2>Protocolo de Ativos Homologados</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Documentos</h3>
+                    <div class="tags">
+                        <span class="tag">PDF</span> <span class="tag">DOCX</span> 
+                        <span class="tag">XLSX</span> <span class="tag">PPTX</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Imagens & Design</h3>
+                    <div class="tags">
+                        <span class="tag">JPG</span> <span class="tag">PNG</span> 
+                        <span class="tag">DWG</span> <span class="tag">AI</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Segurança</h3>
+                    <div class="tags">
+                        <span class="tag">CRT</span> <span class="tag">PEM</span> 
+                        <span class="tag">PFX</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Mídia</h3>
+                    <div class="tags">
+                        <span class="tag">MP4</span> <span class="tag">MOV</span> 
+                        <span class="tag">MP3</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="footer-note">
+            <strong>Nota de Governança (TI.26.06.10):</strong><br>
+            Arquivos compactados (.ZIP, .RAR) e executáveis são bloqueados preventivamente. 
+            Utilize o SharePoint para troca de arquivos não homologados.
+        </div>
+    </div>
+</body>
+</html>
