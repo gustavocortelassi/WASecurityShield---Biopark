@@ -1,30 +1,30 @@
-// allowlist de arquivos que não podem rodar scriptes ou macros
+// Lista de extensões autorizadas pelo setor de TI
 const ALLOWED_EXTENSIONS = ['.pdf', '.jpg', '.jpeg', '.png', '.docx', '.xlsx', '.pptx', '.txt', '.csv'];
 
-chrome.downloads.onCreated.addListener((downloadItem) => {
-  const isFromWhatsApp = downloadItem.referrer && downloadItem.referrer.includes('web.whatsapp.com');
-  
-  if (isFromWhatsApp) {
-    const fileName = downloadItem.filename.toLowerCase();
-    
-    // Verifica se o arquivo termina com alguma das extensões permitidas
-    const isSafe = ALLOWED_EXTENSIONS.some(ext => fileName.endsWith(ext));
+chrome.downloads.onDeterminingFilename.addListener((downloadItem, suggest) => {
+    const urlOrigem = downloadItem.referrer || downloadItem.url || "";
+    const isFromWhatsApp = urlOrigem.includes('web.whatsapp.com') || urlOrigem.includes('whatsapp.net');
 
-    if (!isSafe) {
-      chrome.downloads.cancel(downloadItem.id, () => {
-        showBlockedNotification(downloadItem.filename);
-        console.warn(`Segurança: Download de arquivo não autorizado bloqueado: ${fileName}`);
-      });
+    if (isFromWhatsApp) {
+        const fileName = downloadItem.filename.toLowerCase();
+        const isSafe = ALLOWED_EXTENSIONS.some(ext => fileName.endsWith(ext));
+
+        if (!isSafe) {
+            chrome.downloads.cancel(downloadItem.id, () => {
+                showBlockedNotification(downloadItem.filename);
+            });
+            return;
+        }
     }
-  }
+    suggest();
 });
 
 function showBlockedNotification(fileName) {
-  chrome.notifications.create({
-    type: 'basic',
-    iconUrl: '../icons/icon128.png',
-    title: '🛡️ Proteção Institucional',
-    message: `O arquivo "${fileName}" não é permitido por política de segurança. Entre em contato com o TI se precisar deste acesso.`,
-    priority: 2
-  });
+    chrome.notifications.create({
+        type: 'basic',
+        iconUrl: '../icons/icon128.png',
+        title: '🛡️ Bloqueio de Segurança',
+        message: `O arquivo "${fileName}" foi bloqueado. Protocolo: Transfira arquivos não listados via SharePoint ou E-mail.`,
+        priority: 2
+    });
 }
